@@ -46,4 +46,23 @@ class SchoolTest < Minitest::Test
     assert_equal '16:00', school1.end_time
     assert_equal '12:00', school2.end_time
   end
+
+  def test_school_is_full_time
+    school1 = School.new('9:00', 7)
+    school2 = School.new('9:00', 3)
+
+    assert_equal true, school1.is_full_time?
+    assert_equal false, school2.is_full_time?
+  end
+
+  def test_has_standard_student_name
+    school = School.new('9:00', 7)
+    school.add_student_name('Aurora')
+    school.add_student_name('tim')
+    school.add_student_name('megan')
+    require "pry"; binding.pry
+
+    assert_equal ["Aurora", "Tim", "Megan"], school.standard_student_name
+  end
+
 end

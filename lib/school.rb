@@ -16,4 +16,13 @@ class School
     (@start_time.to_i + @hours_in_school_day).to_s + ":00"
   end
 
+  def is_full_time?
+    return true if @hours_in_school_day >= 4
+    false
+  end
+
+  def standard_student_name
+    @student_names.map { |student_name| student_name.capitalize }
+  end
+
 end
